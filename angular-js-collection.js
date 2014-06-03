@@ -105,6 +105,10 @@ _.extend(Model.prototype, {
 
   clone: function () {
     return new this.constructor(this.attributes, this.options);
+  },
+
+  toJSON: function () {
+    return _.clone(this.attributes);
   }
 });
 
