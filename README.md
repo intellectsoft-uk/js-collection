@@ -18,9 +18,9 @@ Javascript collection and model
 Contribute
 =============
 
-npn install
-bower install
+- npn install
+- bower install
 
-gulp test
-gulp package
-gulp test-package
+- gulp test
+- gulp package
+- gulp test-package
