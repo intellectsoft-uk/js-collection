@@ -36,4 +36,12 @@ describe('Collection', function () {
     expect(collection.models[1].get('id')).toBe(2);
     expect(collection.models[2].get('id')).toBe(3);
   });
+
+  it('should update existing model by id', function () {
+    var collection = new Collection([{id: 2, message: 'first'}]);
+    collection.add({id: 2, message: 'second'});
+    expect(collection.size()).toBe(1);
+    expect(collection.get(2).get('message')).toBe('second');
+  });
+
 });

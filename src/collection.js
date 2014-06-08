@@ -101,6 +101,8 @@ _.extend(Model.prototype, {
 
   clear: function () {
     this.attributes = {};
+
+    return this;
   },
 
   clone: function () {
@@ -156,9 +158,16 @@ _.extend(Collection.prototype, {
     var self = this;
     models = _.isArray(models) ? models : [models];
     _(models).each(function (data) {
-      var model = new self.model(data);
-      self.models.push(model);
-      self.byId[model.get(self.id)] = model;
+      if (model = self.get(data[self.id])) {
+        model.clear();
+        for (var key in data) {
+          model.set(key, data[key]);
+        }
+      } else {
+        var model = new self.model(data);
+        self.models.push(model);
+        self.byId[model.get(self.id)] = model;
+      }
     });
 
     return this.sort();
