@@ -204,7 +204,7 @@ _.extend(Collection.prototype, {
     return this;
   },
   resetModel: function (model) {
-    this.byId[model.get('id')] = null;
+    this.byId[model.get(this.id)] = null;
     var index = this.indexOf(model);
     this.models.splice(index, 1);
   }

@@ -44,4 +44,14 @@ describe('Collection', function () {
     expect(collection.get(2).get('message')).toBe('second');
   });
 
+  it('should remove model from collection', function () {
+    var collection = new Collection([{id: 2, message: 'first'}]);
+    collection.remove(collection.get(2));
+    expect(collection.size()).toBe(0);
+    expect(collection.byId[2]).toBeNull();
+    collection = new Collection([{name: 2, message: 'test id'}], {id: 'name'});
+    collection.remove(collection.get(2));
+    expect(collection.size()).toBe(0);
+    expect(collection.byId[2]).toBeNull();
+  })
 });
